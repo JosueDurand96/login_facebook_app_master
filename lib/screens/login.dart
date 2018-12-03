@@ -203,8 +203,12 @@ class _LoginPageState extends State<LoginPage> {
           minWidth: 200.0,
           height: 42.0,
           onPressed: (){
+
             //Se llama la funcion de la Clase user_controller
             obj1.getTokenUser(emailcontrol.text,passcontrol.text);
+            // Llamar a otra pantalla
+            Navigator.push(
+                 context, MaterialPageRoute(builder: (context) => Menu()));
           },
           //() => Navigator.push(
           // context, MaterialPageRoute(builder: (context) => Menu()),

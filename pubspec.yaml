@@ -20,8 +20,10 @@ dependencies:
   google_sign_in: "^3.0.4"
   flutter_facebook_login: "1.1.1"
   firebase_auth: "0.6.5"
-
-
+  http: ^0.12.0
+  scoped_model: "^0.3.0"
+  shared_preferences: "0.4.3"
+  rxdart: "0.19.0"
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -42,6 +44,9 @@ flutter:
   assets:
     - assets/logo_login.png
     - assets/logo_oficial.jpeg
+    - assets/correo.png
+    - assets/register.png
+    - assets/sms.png
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

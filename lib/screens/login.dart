@@ -264,7 +264,18 @@ class _LoginPageState extends State<LoginPage> {
 //      );
 //    }
 //  }
-
+  void _showDialog() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Error revise su correo o contraseña",style: TextStyle(color: Colors.red)),
+        );
+      },
+    );
+  }
   @override
   Widget build(BuildContext context) {
     // tok = obj1.getTokenUser(emailcontrol.text,  passcontrol.text);
@@ -321,12 +332,12 @@ class _LoginPageState extends State<LoginPage> {
             //Se llama la funcion de la Clase user_controller
             obj1.getTokenUser(emailcontrol01.text, passcontrol01.text);
            if(emailcontrol01.text=='admin'&&passcontrol01.text=='admin'){
-                       print('BIENVENIDOS');
+
                        Navigator.push(
                             context, MaterialPageRoute(builder: (context) => Menu()));
 
            }else{
-               return('ERROR');
+             _showDialog();
            }
 
 

@@ -13,7 +13,23 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final correovalidation3 = TextEditingController();
+
   final correovalidation = TextEditingController();
+
+  void _showDialog() {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Campo vacío",style: TextStyle(color: Colors.blueAccent)),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final logo_gmail = Hero(
@@ -35,16 +51,22 @@ class _RegisterPageState extends State<RegisterPage> {
           minWidth: 200.0,
           height: 42.0,
           onPressed: (){
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => _SmsPageState()),
-            );
+            if(correovalidation3.text.isEmpty){
+             _showDialog();
+            }else{
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => _SmsPageState()),
+              );
+            }
+
           },
           child: Text('Siguiente', style: TextStyle(color: Colors.white)),
         ),
       ),
     );
     final field_gmail = TextFormField(
+      controller: correovalidation3,
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
       decoration: InputDecoration(
@@ -73,6 +95,8 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 }
 class _SmsPageState extends StatelessWidget {
+  final telefvalidator=TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final logo_sms = Hero(
@@ -94,16 +118,35 @@ class _SmsPageState extends StatelessWidget {
           minWidth: 200.0,
           height: 42.0,
           onPressed: (){
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => _CheckSmsPageState()),
-            );
+            void _showDialog() {
+              // flutter defined function
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  // return object of type Dialog
+                  return AlertDialog(
+                    title: new Text("Campo vacío",style: TextStyle(color: Colors.blueAccent)),
+                  );
+                },
+              );
+            }
+            if(telefvalidator.text.isEmpty){
+              _showDialog();
+            }else{
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => _CheckSmsPageState()),
+              );
+            }
+
           },
           child: Text('Siguiente', style: TextStyle(color: Colors.white)),
         ),
       ),
     );
     final field_number = TextFormField(
+      controller: telefvalidator,
+
       keyboardType: TextInputType.phone,
       maxLength: 9,
       autofocus: false,
@@ -134,6 +177,7 @@ class _SmsPageState extends StatelessWidget {
   }
 }
 class _CheckSmsPageState extends StatelessWidget {
+  final validarnumero=TextEditingController();
   @override
   Widget build(BuildContext context) {
     final logo_sms_validate = Hero(
@@ -157,16 +201,35 @@ class _CheckSmsPageState extends StatelessWidget {
           minWidth: 200.0,
           height: 42.0,
           onPressed: (){
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => _RegisterDetailPageState()),
-            );
+            void _showDialog() {
+              // flutter defined function
+              showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  // return object of type Dialog
+                  return AlertDialog(
+                    title: new Text("Campo vacío",style: TextStyle(color: Colors.blueAccent)),
+                  );
+                },
+              );
+            }
+
+            if(validarnumero.text.isEmpty){
+              _showDialog();
+            }else{
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => _RegisterDetailPageState()),
+              );
+            }
+
           },
           child: Text('Validar Numero', style: TextStyle(color: Colors.white)),
         ),
       ),
     );
     final field_sms = TextFormField(
+      controller: validarnumero,
       //Se relaciona el controller con el campo de texto
       keyboardType: TextInputType.phone,
       maxLength: 9,
@@ -207,6 +270,8 @@ class _RegisterDetailPageState extends StatelessWidget {
   final emailcontrol = TextEditingController();
   final usuarioControl = TextEditingController();
   final passcontrol = TextEditingController();
+
+
   bool _autoValidate = false;
   String _name;
   String _email;
@@ -217,6 +282,18 @@ class _RegisterDetailPageState extends StatelessWidget {
   String tok;
   @override
   Widget build(BuildContext context) {
+    void _showDialog() {
+      // flutter defined function
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          // return object of type Dialog
+          return AlertDialog(
+            title: new Text("Campo vacío",style: TextStyle(color: Colors.blueAccent)),
+          );
+        },
+      );
+    }
     final logo_register = Hero(
       tag: 'hero',
       child: CircleAvatar(
@@ -306,10 +383,23 @@ class _RegisterDetailPageState extends StatelessWidget {
           minWidth: 200.0,
           height: 42.0,
           onPressed: (){
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => (OptionSessionPage())),
-            );
+            final nombreControl = TextEditingController();
+            final apellidoPaternoControl = TextEditingController();
+            final apellidoMaternoControl = TextEditingController();
+            final emailcontrol = TextEditingController();
+            final usuarioControl = TextEditingController();
+            final passcontrol = TextEditingController();
+
+            if(nombreControl.text.isEmpty||apellidoPaternoControl.text.isEmpty||apellidoMaternoControl.text.isEmpty||emailcontrol.text.isEmpty
+            ||usuarioControl.text.isEmpty||passcontrol.text.isEmpty){
+              _showDialog();
+            }else{
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => (OptionSessionPage())),
+              );
+            }
+
           },
           //() => Navigator.push(
           // context, MaterialPageRoute(builder: (context) => Menu()),

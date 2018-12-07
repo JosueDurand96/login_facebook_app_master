@@ -43,7 +43,7 @@ class _OptionSessionPageState extends State<OptionSessionPage> {
           minWidth: 200.0,
           height: 42.0,
           onPressed: () => Navigator.push(
-           context, MaterialPageRoute(builder: (context) => LoginPage()),
+            context, MaterialPageRoute(builder: (context) => LoginPage()),
           ),
           // color: canchaPrimaryLight,
           child: Text('Ingresar', style: TextStyle(color: Colors.white)),
@@ -61,14 +61,10 @@ class _OptionSessionPageState extends State<OptionSessionPage> {
           minWidth: 200.0,
           height: 42.0,
           onPressed:
-            //Se llama la funcion de la Clase user_controller
-                () => Navigator.push(
-                 context, MaterialPageRoute(builder: (context) => RegisterPage()),
-                ),
-
-          //() => Navigator.push(
-          // context, MaterialPageRoute(builder: (context) => Menu()),
-          //),
+          //Se llama la funcion de la Clase user_controller
+              () => Navigator.push(
+            context, MaterialPageRoute(builder: (context) => RegisterPage()),
+          ),
           // color: canchaPrimaryLight,
           child: Text('Registrarse', style: TextStyle(color: Colors.white)),
         ),

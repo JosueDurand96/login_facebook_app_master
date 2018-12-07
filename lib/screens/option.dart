@@ -10,6 +10,7 @@ class OptionPage extends StatefulWidget {
 }
 
 class _OptionPageState extends State<OptionPage> {
+  final passcontrol2 = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final logo = Hero(
@@ -33,6 +34,7 @@ class _OptionPageState extends State<OptionPage> {
     );
 
     final password = TextFormField(
+      keyboardType: TextInputType.multiline,
       autofocus: false,
       //initialValue: 'some password',
       obscureText: true,

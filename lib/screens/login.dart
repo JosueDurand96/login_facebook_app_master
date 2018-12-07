@@ -15,6 +15,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:login_facebook_app/model/user_controller.dart';
 
 class LoginPage extends StatefulWidget {
+  LoginPage({Key key}) : super(key: key);
   static String tag = 'login-page';
   @override
   _LoginPageState createState() => new _LoginPageState();
@@ -30,8 +31,8 @@ GoogleSignIn _googleSignIn = new GoogleSignIn(
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   //Creacion de los nombres de los campos de texto lo cual se alamcena la data
-  final emailcontrol = TextEditingController();
-  final passcontrol = TextEditingController();
+  final emailcontrol01 = TextEditingController();
+  final passcontrol01 = TextEditingController();
   UserController obj1 = new UserController();
   User tokuser = new User();
   String tok;
@@ -267,6 +268,11 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     // tok = obj1.getTokenUser(emailcontrol.text,  passcontrol.text);
+    final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+    bool _autoValidate = false;
+    String _name;
+    String _email;
+    String _mobile;
 
     final logo = Hero(
       tag: 'hero',
@@ -278,26 +284,20 @@ class _LoginPageState extends State<LoginPage> {
     );
 
     final email = TextFormField(
-      key: _formKey,
+
       //Se relaciona el controller con el campo de texto
-      controller: emailcontrol,
+      controller: emailcontrol01,
       keyboardType: TextInputType.emailAddress,
       autofocus: false,
       // initialValue: 'alucard@gmail.com',
-      validator: (value) {
-        if (value.isEmpty) {
-          return 'Please enter some text';
-        }
-      },
       decoration: InputDecoration(
         hintText: 'Correo',
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
     );
-
     final password = TextFormField(
-      controller: passcontrol,
+      controller: passcontrol01,
       autofocus: false,
       //initialValue: 'some password',
       obscureText: true,
@@ -319,17 +319,15 @@ class _LoginPageState extends State<LoginPage> {
           height: 42.0,
           onPressed: () {
             //Se llama la funcion de la Clase user_controller
-            obj1.getTokenUser(emailcontrol.text, passcontrol.text);
-            //tok=tokuser.tokens;
-            // print('HELLOOO WORLD : '+obj1.getTokenUser(emailcontrol.text,  passcontrol.text));
-            ///   print('HELLOOO WORLD : '+tokuser.username.toString());
-            if (_formKey.currentState.validate()) {
-              // If the form is valid, display a snackbar. In the real world, you'd
-              // often want to call a server or save the information in a database
-              Scaffold
-                  .of(context)
-                  .showSnackBar(SnackBar(content: Text('Processing Data')));
-            }
+            obj1.getTokenUser(emailcontrol01.text, passcontrol01.text);
+           if(emailcontrol01.text=='admin'&&passcontrol01.text=='admin'){
+                       print('BIENVENIDOS');
+                       Navigator.push(
+                            context, MaterialPageRoute(builder: (context) => Menu()));
+
+           }else{
+               return('ERROR');
+           }
 
 
           },

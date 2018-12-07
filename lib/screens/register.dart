@@ -13,7 +13,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-
+  final correovalidation = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final logo_gmail = Hero(
@@ -104,7 +104,8 @@ class _SmsPageState extends StatelessWidget {
       ),
     );
     final field_number = TextFormField(
-      keyboardType: TextInputType.emailAddress,
+      keyboardType: TextInputType.phone,
+      maxLength: 9,
       autofocus: false,
       // initialValue: 'alucard@gmail.com',
       decoration: InputDecoration(
@@ -145,9 +146,11 @@ class _CheckSmsPageState extends StatelessWidget {
     );
     final button_sms = Padding(
       padding: EdgeInsets.symmetric(vertical: 16.0),
+
       child: Material(
         borderRadius: BorderRadius.circular(30.0),
         color: canchaPrimaryLight,
+
         shadowColor: Colors.green.shade100,
         elevation: 5.0,
         child: MaterialButton(
@@ -165,11 +168,13 @@ class _CheckSmsPageState extends StatelessWidget {
     );
     final field_sms = TextFormField(
       //Se relaciona el controller con el campo de texto
-      keyboardType: TextInputType.emailAddress,
+      keyboardType: TextInputType.phone,
+      maxLength: 9,
       autofocus: false,
       // initialValue: 'alucard@gmail.com',
       decoration: InputDecoration(
         hintText: 'Numero de Validación',
+
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
@@ -196,9 +201,17 @@ class _CheckSmsPageState extends StatelessWidget {
 
 class _RegisterDetailPageState extends StatelessWidget {
   //Creacion de los nombres de los campos de texto lo cual se alamcena la data
+  final nombreControl = TextEditingController();
+  final apellidoPaternoControl = TextEditingController();
+  final apellidoMaternoControl = TextEditingController();
   final emailcontrol = TextEditingController();
+  final usuarioControl = TextEditingController();
   final passcontrol = TextEditingController();
-
+  bool _autoValidate = false;
+  String _name;
+  String _email;
+  String _mobile;
+ final
   UserController obj1= new UserController();
   User objuuser = new User();
   String tok;
@@ -214,8 +227,17 @@ class _RegisterDetailPageState extends StatelessWidget {
     );
     final field_name = TextFormField(
       //Se relaciona el controller con el campo de texto
-      controller: emailcontrol,
-      keyboardType: TextInputType.emailAddress,
+      controller: nombreControl,
+      keyboardType: TextInputType.text,
+      validator: (String arg){
+        if(arg.length < 3)
+          return 'Name must be more than 2 charater';
+        else
+          return null;
+      },
+      onSaved: (String val) {
+        _name = val;
+      },
       autofocus: false,
       // initialValue: 'alucard@gmail.com',
       decoration: InputDecoration(
@@ -226,8 +248,8 @@ class _RegisterDetailPageState extends StatelessWidget {
     );
     final field_last_name = TextFormField(
       //Se relaciona el controller con el campo de texto
-      controller: emailcontrol,
-      keyboardType: TextInputType.emailAddress,
+      controller: apellidoPaternoControl,
+      keyboardType: TextInputType.multiline,
       autofocus: false,
       // initialValue: 'alucard@gmail.com',
       decoration: InputDecoration(
@@ -238,8 +260,8 @@ class _RegisterDetailPageState extends StatelessWidget {
     );
     final field_mother_last_name = TextFormField(
       //Se relaciona el controller con el campo de texto
-      controller: emailcontrol,
-      keyboardType: TextInputType.emailAddress,
+      controller: apellidoMaternoControl,
+      keyboardType: TextInputType.multiline,
       autofocus: false,
       // initialValue: 'alucard@gmail.com',
       decoration: InputDecoration(
@@ -250,8 +272,8 @@ class _RegisterDetailPageState extends StatelessWidget {
     );
     final field_user = TextFormField(
       //Se relaciona el controller con el campo de texto
-      controller: emailcontrol,
-      keyboardType: TextInputType.emailAddress,
+      controller: usuarioControl,
+      keyboardType: TextInputType.multiline,
       autofocus: false,
       // initialValue: 'alucard@gmail.com',
       decoration: InputDecoration(
@@ -262,8 +284,9 @@ class _RegisterDetailPageState extends StatelessWidget {
     );
     final field_password = TextFormField(
       //Se relaciona el controller con el campo de texto
-      controller: emailcontrol,
-      keyboardType: TextInputType.emailAddress,
+      controller: passcontrol,
+      maxLength: 6,
+      keyboardType: TextInputType.multiline,
       autofocus: false,
       // initialValue: 'alucard@gmail.com',
       decoration: InputDecoration(

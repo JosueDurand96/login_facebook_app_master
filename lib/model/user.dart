@@ -3,12 +3,14 @@ import 'dart:io';
 import 'dart:async';
 
 class User {
-  String token;
+  String tokens;
   String username;
   String type;
+  int status;
 
   //Recibir datos Rest se utiliza Future y async
-  Future<dynamic> apiRequest(String url, Map jsonMap) async {
+  Future<User> apiRequest(String url, Map jsonMap) async {
+    User obj = new User();
     HttpClient httpClient = new HttpClient();
     HttpClientRequest request = await httpClient.postUrl(Uri.parse(url));
     request.headers.set('content-type', 'application/json');
@@ -17,18 +19,11 @@ class User {
     String reply = await response.transform(utf8.decoder).join();
     var resbody = json.decode(reply);
     //Captura los datos del Post
-    username = resbody['username'];
-
-    token = resbody['token'];
-    type = resbody['type'];
-    //Prueba
-    //print('nombreeee:    '+username);
-
-  //  print('tokeeeen   '+tokens);
-  //  print(type);
+    obj.username = username = resbody['username'];
+    obj.type = type = resbody['type'];
+    obj.tokens = type = resbody['token'];
     httpClient.close();
     //retorna un String
-    return reply;
+    return obj;
   }
-
 }

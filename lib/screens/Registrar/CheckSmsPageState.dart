@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:login_facebook_app/screens/Registrar/RegisterDetailPageState.dart';
+import 'package:login_facebook_app/screens/Registrar/SmsPageState.dart';
 import 'package:login_facebook_app/utils/colors.dart';
 
 class CheckSmsPageState extends StatefulWidget {

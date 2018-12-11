@@ -77,8 +77,10 @@ class _RegisterPageState extends State<RegisterPage> {
               height: 50.0,
               onPressed: (){
                 _sendToServer();
+
+
               },
-              child: Text('Siguiente', style: TextStyle(color: Colors.white,fontSize: 22)),
+              child: Text('SIGUIENTE', style: TextStyle(color: Colors.white,fontSize: 22)),
             ),
           ),
 

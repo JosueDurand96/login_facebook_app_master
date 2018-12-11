@@ -47,7 +47,7 @@ class _SmsPageState extends State<SmsPageState>{
 
         new TextFormField(
 
-            decoration: new InputDecoration(hintText: 'Escribir Código'),
+            decoration: new InputDecoration(hintText: 'Celular'),
             keyboardType: TextInputType.phone,
             controller: telefvalidator,
             maxLength: 9,
@@ -104,7 +104,7 @@ class _SmsPageState extends State<SmsPageState>{
       print("celular $mobile");
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => (RegisterDetailPageState())),
+        MaterialPageRoute(builder: (context) => (CheckSmsPageState())),
       );
     } else {
       // validation error

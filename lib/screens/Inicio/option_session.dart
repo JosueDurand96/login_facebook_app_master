@@ -1,11 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:login_facebook_app/utils/colors.dart';
-import 'package:login_facebook_app/screens/menu.dart';
+import 'package:login_facebook_app/screens/Inicio/menu.dart';
 import 'package:login_facebook_app/model/user_controller.dart';
 import 'package:login_facebook_app/model/user.dart';
-import 'package:login_facebook_app/screens/register.dart';
-import 'package:login_facebook_app/screens/login.dart';
+import 'package:login_facebook_app/screens/Registrar/register.dart';
+import 'package:login_facebook_app/screens/Inicio/login.dart';
 
 class OptionSessionPage extends StatefulWidget {
   static String tag = 'login-page';

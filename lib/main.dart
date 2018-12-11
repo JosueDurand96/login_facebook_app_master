@@ -2,11 +2,11 @@ import 'dart:async';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:login_facebook_app/screens/DetailedScreen.dart'; //important fix
+import 'package:login_facebook_app/screens/Inicio/DetailedScreen.dart'; //important fix
 import 'package:flutter/material.dart';
-import 'package:login_facebook_app/screens/login.dart';
+import 'package:login_facebook_app/screens/Inicio/login.dart';
 import 'package:login_facebook_app/utils/colors.dart';
-import 'package:login_facebook_app/screens/splash.dart';
+import 'package:login_facebook_app/screens/Inicio/splash.dart';
 
 void main() => runApp(MyApp());
 

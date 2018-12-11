@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'login.dart'; //important fix
+import 'package:login_facebook_app/screens/Inicio/login.dart'; //important fix
 
 class DetailedScreen extends StatelessWidget {
   final UserInfoDetails detailsUser;
